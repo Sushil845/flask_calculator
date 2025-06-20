@@ -1,0 +1,10 @@
+stages:
+  - test
+
+test_app:
+  stage: test
+  image: python:3.10-slim
+  before_script:
+    - pip install -r requirements.txt
+  script:
+    - pytest
