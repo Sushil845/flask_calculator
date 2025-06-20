@@ -3,6 +3,9 @@ stages:
   - build
   - deploy
 
+variables:
+  PYTHONPATH: "$CI_PROJECT_DIR"
+
 test:
   stage: test
   image: python:3.10
@@ -20,7 +23,7 @@ build:
   services:
     - docker:dind
   script:
-    - echo "Starting build at $(date)"
+    - echo "Starting Docker build at $(date)"
     - docker build -t calculator-app .
     - echo "Build completed at $(date)"
 
@@ -28,4 +31,5 @@ deploy:
   stage: deploy
   script:
     - echo "Starting deployment at $(date)"
+    # Add actual deployment steps below (e.g., Heroku CLI or SSH deploy)
     - echo "Deployment finished at $(date)"
